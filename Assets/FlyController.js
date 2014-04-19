@@ -7,6 +7,7 @@ var alt_body_reference:GameObject;
 var acceleration:float;
 var maxSpeed:float;
 var force:float;
+var turnSpeed:float;
 
 function fix_degrees (a:float) {
 	while (a<0){
@@ -52,9 +53,9 @@ function OnGUI () {
 	GUI.Label (Rect (200, 30, 100, 20), ("x: "+x.ToString()),style);*/
 	var style:GUIStyle = GUIStyle();
 	style.fontSize = size;
-	GUI.Label (Rect (200, 30, 100, 20), ("v_rotation:"+get_v_rotation().ToString()),style);
+/*	GUI.Label (Rect (200, 30, 100, 20), ("v_rotation:"+get_v_rotation().ToString()),style);
 	GUI.Label (Rect (200, 70, 100, 20), ("h_rotation:"+get_h_rotation().ToString()),style);
-
+*/
 }
 
 function Start () {
@@ -72,8 +73,13 @@ function Update () {
 		var y_force:float = (virt-90)/90;
 		var t:float = Time.deltaTime;
 		rigidbody.AddForce(Vector3(0,y_force,0)*force);
-		//Debug.Log(y_force);
-		Debug.Log(y_force*force);
-	}
+		//if you want straffing:
+		var x_force:float = hori;
+		//x-axis = cosine, z=sin
+		rigidbody.AddForce(Vector3(Mathf.Cos(x_force),0,Mathf.Sin(x_force))*force);
+		//If you want turning
+/*		var x_force:float = -1*(hori-105)/55;
+		transform.rotation.y = transform.rotation.y + x_force*turnSpeed;
+*/	}
 
 }
