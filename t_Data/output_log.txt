@@ -17,3 +17,4 @@ Loading C:\Users\Sean\Desktop\VTHacksOculusKinect\t_Data\Managed\Assembly-UnityS
 desktop: 1440x900 60Hz; virtual: 1440x900 at 0,0
 <RI> Initializing input.
 <RI> Input initialized.
+Platform assembly: C:\Users\Sean\Desktop\VTHacksOculusKinect\t_Data\Managed\Boo.Lang.dll (this message is harmless)
