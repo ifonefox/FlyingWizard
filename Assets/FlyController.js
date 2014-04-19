@@ -6,6 +6,8 @@ var feet_reference:GameObject;
 var alt_body_reference:GameObject;
 var acceleration:float;
 var maxSpeed:float;
+var force:float;
+
 function fix_degrees (a:float) {
 	while (a<0){
 		a=a+360;
@@ -22,6 +24,11 @@ function get_v_rotation(){
 	var body_hand:Vector3 = Vector3(body[0]-hand[0],body[1]-hand[1],body[2]-hand[2]);
 	var body_feet:Vector3 = Vector3(body[0]-feet[0],body[1]-feet[1],body[2]-feet[2]);
 	return Vector3.Angle(body_hand,body_feet);
+}
+function vector(){
+	var body2:Vector3 = body_reference.transform.position;
+	var hand2:Vector3 = hand_reference.transform.position;
+	return Vector3(body2[0]-hand2[0],body2[1]-hand2[1],body2[2]-hand2[2]);
 }
 function get_h_rotation(){
 	var body1:Vector3 = body_reference.transform.position;
@@ -55,14 +62,18 @@ function Start () {
 }
 
 function Update () {
-	/*var y:float = transform.eulerAngles.y;
-	var floor_y:int = Mathf.Floor(y);
-	if (floor_y<100 && floor_y != 0){
-		if (body.rigidbody.velocity.y<maxSpeed){
-			body.rigidbody.velocity+=new Vector3(0,1,0);
-		}
+	//VIRTICAL FLYING
+	var virt:float = get_v_rotation();
+	var hori:float = get_h_rotation();
+	var current:Vector3 = vector();
+	if (virt>90){
+		//Activate flying
+		//rigidbody.AddForce(Vector3(current[0],-1*current[1],current[2]) * force * Time.deltaTime);
+		var y_force:float = (virt-90)/90;
+		var t:float = Time.deltaTime;
+		rigidbody.AddForce(Vector3(0,y_force,0)*force);
+		//Debug.Log(y_force);
+		Debug.Log(y_force*force);
 	}
-    else{
-    	
-    }*/
+
 }
