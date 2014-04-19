@@ -12,5 +12,8 @@
 /*.pidb
 /*.booproj
 
+
+*.exe
+
 # For Macs:
 .DS_Ignore
