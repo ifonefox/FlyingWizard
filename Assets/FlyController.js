@@ -70,7 +70,7 @@ function Update () {
 	if (virt>90){
 		//Activate flying
 		//rigidbody.AddForce(Vector3(current[0],-1*current[1],current[2]) * force * Time.deltaTime);
-		var y_force:float = (virt-90)/90;
+		var y_force:float = Mathf.Abs((virt-90)/90);
 		var t:float = Time.deltaTime;
 		rigidbody.AddForce(Vector3(0,y_force,0)*force);
 		//if you want straffing:
