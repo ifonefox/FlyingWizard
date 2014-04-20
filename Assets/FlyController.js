@@ -81,5 +81,6 @@ function Update () {
 /*		var x_force:float = -1*(hori-105)/55;
 		transform.rotation.y = transform.rotation.y + x_force*turnSpeed;
 */	}
+	var wind:int = Mathf.Round(GetComponent(Rigidbody).velocity.magnitude);
 
 }
